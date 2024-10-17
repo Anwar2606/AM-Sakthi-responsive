@@ -38,7 +38,7 @@
 // export default Navbar;
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Logo from '../assets/WillowCrackers.png';
+import Logo from '../assets/AMsakthiLogo.jpg';
 import './Navbar.css';
 
 const Navbar = () => {

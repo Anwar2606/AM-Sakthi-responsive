@@ -4,23 +4,22 @@ import { getStorage } from 'firebase/storage';
 import { getAuth } from 'firebase/auth'; 
 
 const firebaseConfig = {
-  //new testing 
-  // apiKey: "AIzaSyDYGUnlMaVfzLggn-iRF3EVulbOo4qivvo",
-  // authDomain: "tssbilling-8e7b5.firebaseapp.com",
-  // projectId: "tssbilling-8e7b5",
-  // storageBucket: "tssbilling-8e7b5.appspot.com",
-  // messagingSenderId: "993422185891",
-  // appId: "1:993422185891:web:055fc6f1b229c1b9e57616"
+
   //testing
-  apiKey: "AIzaSyCTmFMUSQL_lvxZSGzihrx5G7AypB4Uk5Q",
-  authDomain: "testing-855ce.firebaseapp.com",
-  projectId: "testing-855ce",
-  storageBucket: "testing-855ce.appspot.com",
-  messagingSenderId: "1086229411180",
-  appId: "1:1086229411180:web:4a835dadcfb73b08a42f49" 
+  // apiKey: "AIzaSyCTmFMUSQL_lvxZSGzihrx5G7AypB4Uk5Q",
+  // authDomain: "testing-855ce.firebaseapp.com",
+  // projectId: "testing-855ce",
+  // storageBucket: "testing-855ce.appspot.com",
+  // messagingSenderId: "1086229411180",
+  // appId: "1:1086229411180:web:4a835dadcfb73b08a42f49" 
   
     //main
-               
+    apiKey: "AIzaSyDlnBpY-2AhQEq2G3KBkWWxWtP3SRYLmAM",
+    authDomain: "mainbillingsoftware4.firebaseapp.com",
+    projectId: "mainbillingsoftware4",
+    storageBucket: "mainbillingsoftware4.appspot.com",
+    messagingSenderId: "174898047126",
+    appId: "1:174898047126:web:2937c0a0784d8a1c243ab7", 
   
   //main2
   // apiKey: "AIzaSyC7CD7ve78jS2k3a3XzkdlWwBGhp_9Lfg0",
