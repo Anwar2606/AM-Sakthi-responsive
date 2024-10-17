@@ -1,0 +1,73 @@
+.chart-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px auto; /* Center on the page */
+  width: 100%; /* Full width by default */
+  max-width: 900px; /* Limit width on larger screens */
+  height: auto; /* Adjust height automatically */
+  transition: transform 0.3s ease;
+}
+
+.chart-container:hover {
+  transform: scale(1.05);
+}
+
+.chart-header {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.recharts-tooltip-wrapper .recharts-default-tooltip {
+  border-radius: 4px;
+}
+
+.recharts-legend-wrapper {
+  font-size: 14px;
+  color: #666;
+}
+
+.recharts-bar-rectangle {
+  rx: 4px;
+  transition: transform 0.3s ease;
+}
+
+.recharts-bar-rectangle:hover {
+  transform: scale(1.1);
+}
+
+/* Responsive for large screens */
+@media screen and (min-width: 1024px) {
+  .chart-container {
+    max-width: 900px; /* Fixed max-width for large screens */
+  }
+}
+
+/* Responsive for tablets */
+@media screen and (max-width: 768px) {
+  .chart-header {
+    font-size: 20px;
+  }
+  .chart-container {
+    padding: 15px;
+    width: 95%; /* Slightly smaller width for tablets */
+  }
+}
+
+/* Responsive for mobile devices */
+@media screen and (max-width: 480px) {
+  .chart-header {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+  .chart-container {
+    padding: 10px;
+    width: 100%; /* Full width for mobile */
+    margin: 0; /* Remove margin to fit properly */
+  }
+}

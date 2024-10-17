@@ -1,0 +1,464 @@
+/* .table-container {
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.details-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.details-table th, .details-table td {
+  padding: 15px;
+  text-align: left;
+}
+
+.details-table thead{
+  background-color: #4d79ff;
+  color: black;
+}
+
+.details-table tbody tr {
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.details-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.details-table tbody tr:hover {
+  background-color: #e0e1e4;
+  color: black;
+  transform: scale(1.02);
+}
+
+.details-table tbody tr:hover td {
+  animation: textHoverAnimation 0.6s ease-in-out;
+}
+
+.details-table tbody tr td input {
+  width: 100%;
+  padding: 5px;
+}
+
+.button-cell {
+  display: flex;
+  gap: 10px;
+}
+
+.action-button {
+  background: none;
+  border: none;
+  color: #4d79ff;
+  cursor: pointer;
+  font-size: 1.2em;
+}
+
+.action-button:hover {
+  color: #333;
+}
+
+@keyframes textHoverAnimation {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-10px);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.download-button {
+  background-color: #4d79ff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin: 16px;
+  position: relative;
+  top: 8px;
+  overflow: hidden;
+  left: 20px;
+  
+}
+
+.download-button:hover {
+  background-color: #3355cc;
+  transform: scale(1.05);
+}
+
+.download-button:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background-color: rgba(255, 255, 255, 0.2);
+  transition: width 0.3s ease, height 0.3s ease, top 0.3s ease, left 0.3s ease;
+  border-radius: 50%;
+  z-index: 0;
+  transform: translate(-50%, -50%);
+}
+
+.download-button:hover:before {
+  width: 0;
+  height: 0;
+  top: 50%;
+  left: 50%;
+}
+
+.download-button span {
+  position: relative;
+  z-index: 1;
+}
+
+.custom-date {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+  left: 20px;
+}
+
+
+.custom-date input {
+  border: none;
+  outline: none;
+  padding: 10px;
+  font-size: 1em;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+
+.custom-date:hover,
+.custom-date input:hover {
+  border-color: #4d79ff;
+  box-shadow: 0 0 10px rgba(0, 0, 255, 0.2);
+}
+
+.custom-date .react-datepicker__triangle {
+  display: none; 
+}
+
+.custom-dater .react-datepicker__header {
+  background-color: #4d79ff;
+  color: #fff;
+  border: none;
+  border-radius: 5px 5px 0 0;
+}
+
+.custom-date .react-datepicker__current-month {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.custom-date .react-datepicker__day--selected,
+.custom-datep .react-datepicker__day--keyboard-selected {
+  background-color: #4d79ff;
+  color: #fff;
+}
+
+.custom-datepicker .react-datepicker__day:hover {
+  background-color: rgba(0, 0, 255, 0.1);
+}
+
+.custom-date:hover .react-datepicker__day {
+  transition: background-color 0.3s ease;
+}
+
+.homepage-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr; 
+  gap: 20px;
+  width: 100%;
+  justify-content: center; 
+}
+
+.sales-comparison-chart,
+.revenue-progress {
+  background: #ffffff; 
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  width: 90%; 
+  height: 500px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center; 
+}
+
+.date-button-container {
+  display: flex;
+  align-items: center;
+  gap: 10px; 
+  margin-top: 20px; 
+}
+
+.custom-date {
+  margin: 0; 
+  max-width: 200px; 
+}
+
+.dateTitle {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #333;
+  font-size: 24px;
+  font-family: 'Arial', sans-serif;
+  text-align: left; 
+  width: 100%; 
+}
+
+.custom-date {
+  margin-top: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+  width: 100%; 
+  max-width: 500px; 
+}
+
+.download-button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #4d4dff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%; 
+  max-width: 400px;
+}
+
+.download-button:hover {
+  background-color: #3333ff;
+}
+
+
+.table-container {
+  margin-top: 20px;
+  width: 100%;
+  position: relative;
+  right:20px;
+}
+
+.details-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.details-table th, .details-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.details-table th {
+  background-color: #f4f4f4;
+}
+
+.button-cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.action-button {
+  margin-right: 10px; 
+  background: none; 
+  border: none;    
+  cursor: pointer; 
+  padding: 5px;     
+}
+
+.action-button:last-child {
+  margin-right: 0; 
+}
+
+.action-button i {
+  font-size: 16px; 
+  color: #333;     
+}
+
+
+.footer-link {
+  display: block;
+  text-align: center;
+  color: grey;
+  text-decoration: none;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+}
+ */
+/* General Styles for the Homepage */
+.homepage-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align items to the start (left) */
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Grid container styling */
+.grid-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* Two columns layout: chart and progress */
+  gap: 20px;
+  width: 100%;
+  justify-content: center;
+}
+
+/* Styling for each chart and progress component */
+.sales-comparison-chart,
+.revenue-progress {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Table Container */
+.table-container {
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 100%;
+}
+
+/* Table Styling */
+.details-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.details-table th,
+.details-table td {
+  padding: 10px;
+  text-align: left;
+}
+
+.details-table thead {
+  background-color: #4d79ff;
+  color: #fff;
+}
+
+.details-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Button styling */
+.download-button {
+  background-color: #4d79ff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin: 16px;
+  left: 20px;
+}
+
+.download-button:hover {
+  background-color: #3355cc;
+  transform: scale(1.05);
+}
+
+/* Date picker styling */
+.custom-date {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  left: 20px;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: 1fr; /* Stack items vertically on small screens */
+  }
+
+  .download-button {
+    width: 100%; /* Full width button on small screens */
+    margin-left: 0;
+  }
+
+  .custom-date {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .table-container {
+    margin: 10px;
+  }
+
+  .details-table th, .details-table td {
+    padding: 8px; /* Reduce padding for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .homepage-container {
+    padding: 10px;
+  }
+
+  .grid-container {
+    gap: 10px; /* Reduce gap between elements on very small screens */
+  }
+
+  .sales-comparison-chart,
+  .revenue-progress {
+    padding: 15px; /* Reduce padding on smaller screens */
+  }
+
+  .download-button {
+    font-size: 0.9em; /* Adjust font size for smaller screens */
+  }
+
+  .custom-date {
+    padding: 8px;
+    font-size: 0.9em;
+  }
+
+  .details-table th, .details-table td {
+    padding: 6px; 
+  }
+}
