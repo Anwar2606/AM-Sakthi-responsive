@@ -5,7 +5,7 @@ import { auth } from '../firebase'; // Adjust the path according to your project
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './LoginPage.css'; // Import your CSS file for styles
-import Logo from '../assets/WillowCrackers.png';
+import Logo from '../assets/AMsakthiLogo.jpg';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -49,7 +49,7 @@ const Login = () => {
                     <div className="logo">
                         <img src={Logo} height="160px" width="190px" alt="Logo" />
                     </div>
-                    <h1 className="login-title">WILLOW CRACKERS</h1>
+                    <h1 className="login-title">A.M.SAKTHI PYRO PARK</h1>
                     <p className="body-text">Billing Software</p>
 
                     <div className="sign-in-seperator">
