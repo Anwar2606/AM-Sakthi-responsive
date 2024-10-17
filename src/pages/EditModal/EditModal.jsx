@@ -1,93 +1,143 @@
-import React, { useState, useEffect } from 'react';
-import './EditModal.css'; // Import your CSS for the modal
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { db } from "../firebase";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
+import './EditModal.css';
 
-const EditModal = ({ isOpen, onClose, data, onSave }) => {
-  const [editedData, setEditedData] = useState({});
+const EditProductPage = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const [product, setProduct] = useState(null);
+  const [name, setName] = useState("");
+  const [quantity, setQuantity] = useState(0);
+  const [sno, setSno] = useState("");
+  const [inStock, setInStock] = useState(false);
+  const [regularPrice, setRegularPrice] = useState(0);
+  const [salePrice, setSalePrice] = useState(0);
+  const [category, setCategory] = useState("");
 
   useEffect(() => {
-    setEditedData(data || {});
-  }, [data]);
+    const fetchProduct = async () => {
+      const productDoc = doc(db, "products", id);
+      const docSnap = await getDoc(productDoc);
+      if (docSnap.exists()) {
+        const productData = docSnap.data();
+        setProduct(productData);
+        setName(productData.name);
+        setQuantity(productData.quantity);
+        setInStock(productData.inStock);
+        setSno(productData.sno);
+        setRegularPrice(productData.regularprice);
+        setSalePrice(productData.saleprice);
+        setCategory(productData.category);
+      }
+    };
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setEditedData(prevData => ({
-      ...prevData,
-      [name]: value
-    }));
+    fetchProduct();
+  }, [id]);
+
+  const handleUpdate = async () => {
+    const productData = {
+      name,
+      quantity,
+      sno,
+      inStock,
+      regularprice: parseFloat(regularPrice),
+      saleprice: parseInt(salePrice),
+      category,
+    };
+
+    const productRef = doc(db, "products", id);
+    await updateDoc(productRef, productData);
+
+    navigate("/products");
   };
 
-  const handleSave = () => {
-    onSave(editedData);
-    onClose(); // Close the modal after saving
-  };
-
-  if (!isOpen) return null;
+  if (!product) return <div>Loading...</div>;
 
   return (
-    <div className="edit-modal">
-      <div className="modal-content">
-        <span className="close" onClick={onClose}>&times;</span>
-        <h2>Edit Details</h2>
-        <form>
-          <label>
-            Invoice Number:
-            <input
-              type="text"
-              name="invoiceNumber"
-              value={editedData.invoiceNumber || ''}
-              onChange={handleInputChange}
-            />
-          </label>
-          <label>
-            Customer Name:
-            <input
-              type="text"
-              name="customerName"
-              value={editedData.customerName || ''}
-              onChange={handleInputChange}
-            />
-          </label>
-          <label>
-            CGST Amount:
-            <input
-              type="number"
-              name="cgstAmount"
-              value={editedData.cgstAmount || ''}
-              onChange={handleInputChange}
-            />
-          </label>
-          <label>
-            SGST Amount:
-            <input
-              type="number"
-              name="sgstAmount"
-              value={editedData.sgstAmount || ''}
-              onChange={handleInputChange}
-            />
-          </label>
-          <label>
-            IGST Amount:
-            <input
-              type="number"
-              name="igstAmount"
-              value={editedData.igstAmount || ''}
-              onChange={handleInputChange}
-            />
-          </label>
-          <label>
-            Total Amount:
-            <input
-              type="number"
-              name="totalAmount"
-              value={editedData.totalAmount || ''}
-              onChange={handleInputChange}
-            />
-          </label>
-          <button type="button" onClick={handleSave}>Save</button>
-        </form>
-      </div>
+    <div className="Edit-page">
+      <h2 className="Page-title">Edit Product</h2>
+      <label>Product name:</label>
+      <input
+        className="Edit-input1"
+        type="text"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        placeholder="Product Name"
+      />
+      <label>Product code:</label>
+      <input
+        className="Edit-input1"
+        type="text"
+        value={sno}
+        onChange={(e) => setSno(e.target.value)}
+        placeholder="Product Code"
+      />
+      <label>Regular Price:</label>
+      <input
+        className="Edit-input2"
+        type="number"
+        value={regularPrice}
+        onChange={(e) => setRegularPrice(e.target.value)}
+        placeholder="Regular Price"
+      />
+      <label>Sale Price:</label>
+      <input
+        className="Edit-input2"
+        type="number"
+        value={salePrice}
+        onChange={(e) => setSalePrice(e.target.value)}
+        placeholder="Sale Price"
+      />
+      <label>quantity:</label>
+      <input
+        className="Edit-input1"
+        type="text"
+        value={quantity}
+        onChange={(e) => setQuantity(e.target.value)}
+        placeholder="Quantity"
+      />
+       <label>Instock:</label>
+      <select
+        className="custom-select"
+        value={inStock}
+        onChange={(e) => setInStock(e.target.value)}
+      >
+       <option value="true" >True</option>
+
+        <option value="false">False</option>
+        
+      </select><br></br><br></br>
+      <label>Category:</label>
+      <select
+        className="custom-select"
+        value={category}
+        onChange={(e) => setCategory(e.target.value)}
+      >
+       <option value="" disabled>Select Category</option>
+
+        <option value="ONE SOUND CRACKERS">ONE SOUND CRACKERS</option>
+        <option value="SPARKLERS">SPARKLERS</option>
+        <option value="BIGILI CRACKERS">BIGILI CRACKERS</option>
+        <option value="VANITHA SPECIALS">VANITHA SPECIALS</option>
+        <option value="CHILDRENS HAPPY CRACKERS">
+          CHILDRENS HAPPY CRACKERS
+        </option>
+        <option value="SKYSHOTS">SKYSHOTS</option>
+        <option value="REPEATING SHOTS">REPEATING SHOTS</option>
+        <option value="SHOWERS">T.STARS / CANDLE / PENCIL</option>
+        <option value="TWINKLING STAR">TWINKLING STAR</option>
+        <option value="GARLAND">GARLAND</option>
+        <option value="MATCHES">MATCHES</option>
+        <option value="WALA CRACKERS">WALA CRACKERS</option>
+        <option value="GIFT BOXES">GIFT BOXES</option>
+        <option value="BOMBS">BOMBS</option>
+      </select>
+      <button className="Edit-btn" onClick={handleUpdate}>Update</button>
+      <button className="Edit-btn" onClick={() => navigate("/products")}>Cancel</button>
     </div>
   );
 };
 
-export default EditModal;
+export default EditProductPage;
